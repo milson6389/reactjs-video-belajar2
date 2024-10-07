@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useDispatch, useSelector } from "react-redux";
 import KelasList from "./KelasList";
+import { filteredCourse } from "../../store/courseSlice";
 
 const Kelas = () => {
   const navLinks = [
@@ -9,116 +10,41 @@ const Kelas = () => {
       id: 1,
       title: "Semua Kelas",
       target: "#all",
+      category: "",
     },
     {
       id: 2,
       title: "Pemasaran",
       target: "#mkt",
+      category: "Pemasaran",
     },
     {
       id: 3,
       title: "Desain",
       target: "#dsg",
+      category: "Desain",
     },
     {
       id: 4,
       title: "Pengembangan Diri",
       target: "#sdv",
+      category: "Development",
     },
     {
       id: 5,
       title: "Bisnis",
       target: "#biz",
+      category: "Bisnis",
     },
   ];
 
-  const dataKelas = [
-    {
-      id: 1,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 3,
-      price: "Rp 300K",
-    },
-    {
-      id: 2,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 4,
-      price: "Rp 300K",
-    },
-    {
-      id: 3,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 4,
-      price: "Rp 300K",
-    },
-    {
-      id: 4,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 2,
-      price: "Rp 300K",
-    },
-    {
-      id: 5,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 3,
-      price: "Rp 300K",
-    },
-    {
-      id: 6,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 2,
-      price: "Rp 300K",
-    },
-    {
-      id: 7,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 5,
-      price: "Rp 300K",
-    },
-    {
-      id: 8,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 3,
-      price: "Rp 300K",
-    },
-    {
-      id: 9,
-      lecturer_name: "Jenna Ortega",
-      lecturer_title: "Senior Accountant di Gojek",
-      title: "Big 4 Auditor Financial Analyst",
-      desc: "Mulai transformasi dengan instruktur profesional, harga yang terjangkau, dan...",
-      rating: 3,
-      price: "Rp 300K",
-    },
-  ];
+  let dataKelas = useSelector((state) => state.course.classes);
+  const dispatch = useDispatch();
 
   const [activeIdx, setActiveIdx] = useState(1);
-  const setActiveHandler = (id) => {
+  const setActiveHandler = (id, ctg = "") => {
     setActiveIdx(id);
+    dispatch(filteredCourse({ ctg: ctg }));
   };
 
   return (
@@ -134,7 +60,7 @@ const Kelas = () => {
           {navLinks.map((link) => {
             return (
               <Link
-                onClick={() => setActiveHandler(link.id)}
+                onClick={() => setActiveHandler(link.id, link.category)}
                 key={link.id}
                 to={link.target}
                 className={`${

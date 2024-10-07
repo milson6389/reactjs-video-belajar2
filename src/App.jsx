@@ -10,6 +10,8 @@ import Register from "./pages/Register";
 import Profile from "./pages/Profile";
 import Classes from "./pages/Classes";
 import Orders from "./pages/Orders";
+import ClassDetail from "./pages/ClassDetail";
+import { useSelector } from "react-redux";
 
 function App() {
   const router = createBrowserRouter([
@@ -39,6 +41,10 @@ function App() {
           ),
         },
         {
+          path: "/classes/:id",
+          element: <ClassDetail />,
+        },
+        {
           path: "/profile",
           element: (
             <Private>
@@ -47,7 +53,7 @@ function App() {
           ),
         },
         {
-          path: "/class",
+          path: "/classes",
           element: (
             <Private>
               <Classes />

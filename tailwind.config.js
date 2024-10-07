@@ -4,7 +4,11 @@ const colors = require("tailwindcss/colors");
 export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      brightness: {
+        25: ".25",
+      },
+    },
     colors: {
       primary: "#3cce4c",
       accent: "#e8fce0",

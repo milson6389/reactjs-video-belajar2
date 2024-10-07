@@ -67,7 +67,7 @@ const NavBar = () => {
               <Link to="/profile">Profil Saya</Link>
             </li>
             <li>
-              <Link to="/class">Kelas Saya</Link>
+              <Link to="/classes">Kelas Saya</Link>
             </li>
             <li>
               <Link to="/order">Pesanan Saya</Link>
@@ -107,7 +107,7 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li className="p-4 hover:bg-slate-300">
-                  <Link onClick={onPageChangeHandler} to="/class">
+                  <Link onClick={onPageChangeHandler} to="/classes">
                     Kelas Saya
                   </Link>
                 </li>
