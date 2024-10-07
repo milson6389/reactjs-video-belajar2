@@ -1,4 +1,11 @@
+import { useNavigate } from "react-router-dom";
+
 const KelasDetailPackage = ({ data, packages }) => {
+  const navigate = useNavigate();
+  const onClickBuyHandler = () => {
+    navigate(`/checkout/${data.id}`);
+  };
+
   return (
     <>
       <h1 className="text-2xl font-bold">{data.title}</h1>
@@ -14,7 +21,10 @@ const KelasDetailPackage = ({ data, packages }) => {
       <p className="text-sky-500 text-sm">
         Penawaran spesial tersisa 2 hari lagi!
       </p>
-      <button className="w-full bg-primary text-white rounded-md my-3">
+      <button
+        onClick={onClickBuyHandler}
+        className="w-full bg-primary text-white rounded-md my-3"
+      >
         Beli Sekarang
       </button>
       <h2 className="text-lg font-bold">Kelas ini Sudah Termasuk</h2>

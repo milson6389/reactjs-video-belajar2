@@ -26,7 +26,7 @@ const KelasAccordion = ({ data }) => {
               <li key={id}>
                 <Card className="flex justify-between items-center my-1">
                   <span className="font-bold">{dt.title}</span>
-                  <div className="flex items-center">
+                  <div className="flex items-center text-slate-500">
                     <span className="mx-1">
                       <i className="fa-solid fa-circle-play mx-1"></i>
                       Video

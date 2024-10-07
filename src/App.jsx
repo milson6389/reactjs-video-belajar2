@@ -11,7 +11,9 @@ import Profile from "./pages/Profile";
 import Classes from "./pages/Classes";
 import Orders from "./pages/Orders";
 import ClassDetail from "./pages/ClassDetail";
-import { useSelector } from "react-redux";
+import Checkout from "./pages/Checkout";
+import Payment from "./pages/Payment";
+import Status from "./pages/Status";
 
 function App() {
   const router = createBrowserRouter([
@@ -43,6 +45,18 @@ function App() {
         {
           path: "/classes/:id",
           element: <ClassDetail />,
+        },
+        {
+          path: "/checkout/:id",
+          element: <Checkout />,
+        },
+        {
+          path: "/payment/:id",
+          element: <Payment />,
+        },
+        {
+          path: "/status/:id",
+          element: <Status />,
         },
         {
           path: "/profile",
