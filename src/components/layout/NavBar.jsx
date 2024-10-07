@@ -16,11 +16,15 @@ const NavBar = () => {
     setIsActive(!isActive);
   };
 
+  const onPageChangeHandler = () => {
+    setIsActive(false);
+  };
+
   const logoutHandler = () => {
     if (confirm("Logout ?")) {
       localStorage.removeItem("user");
       setIsMobile(false);
-      setIsActive(false);
+      onPageChangeHandler();
       navigate("/login");
     }
   };
@@ -60,13 +64,13 @@ const NavBar = () => {
               <Link to="/">Kategori</Link>
             </li>
             <li>
-              <Link to="/">Profil Saya</Link>
+              <Link to="/profile">Profil Saya</Link>
             </li>
             <li>
-              <Link to="/">Kelas Saya</Link>
+              <Link to="/class">Kelas Saya</Link>
             </li>
             <li>
-              <Link to="/">Pesanan Saya</Link>
+              <Link to="/order">Pesanan Saya</Link>
             </li>
             <li>
               <button onClick={logoutHandler} className="text-red">
@@ -98,13 +102,19 @@ const NavBar = () => {
                 }`}
               >
                 <li className="p-4 hover:bg-slate-300">
-                  <Link to="/">Profil Saya</Link>
+                  <Link onClick={onPageChangeHandler} to="/profile">
+                    Profil Saya
+                  </Link>
                 </li>
                 <li className="p-4 hover:bg-slate-300">
-                  <Link to="/">Kelas Saya</Link>
+                  <Link onClick={onPageChangeHandler} to="/class">
+                    Kelas Saya
+                  </Link>
                 </li>
                 <li className="p-4 hover:bg-slate-300">
-                  <Link to="/">Pesanan Saya</Link>
+                  <Link onClick={onPageChangeHandler} to="/order">
+                    Pesanan Saya
+                  </Link>
                 </li>
                 <li className="p-4 hover:bg-slate-300">
                   <button onClick={logoutHandler} className="text-red">
