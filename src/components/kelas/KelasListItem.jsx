@@ -1,17 +1,18 @@
 import { Link } from "react-router-dom";
 import CardProfile from "../../assets/img/profile.png";
+import KelasRating from "./KelasRating";
 
 const KelasListItem = ({ kelas }) => {
   return (
     <Link
       to={`/classes/${kelas.id}`}
-      className="border rounded-md p-3 flex flex-col gap-2 hover:scale-105"
+      className="border bg-white rounded-md p-3 flex flex-col gap-2 hover:scale-105"
     >
       <div className="flex md:flex-col justify-between items-start gap-2">
         <img
           src={kelas.thumbnail}
           alt={kelas.title}
-          className="w-1/3 h-[125px] object-cover md:h-[200px] md:w-full"
+          className="w-[150px] h-[125px] object-cover md:h-[200px] md:w-full"
         />
         <div className="flex flex-col gap-3">
           <h1 className="font-bold md:text-2xl">{kelas.title}</h1>
@@ -31,16 +32,7 @@ const KelasListItem = ({ kelas }) => {
       </div>
       <div className="flex justify-between items-center">
         <div className="flex items-center gap-3">
-          {Array.from(Array(5), (e, i) => {
-            return (
-              <i
-                key={i}
-                className={`fa-solid fa-star ${
-                  kelas.rating > i ? "text-warning" : "text-slate-500"
-                } `}
-              ></i>
-            );
-          })}
+          <KelasRating rating={kelas.rating} />
           <p className="underline">{kelas.rating} (86)</p>
         </div>
         <span className="text-primary font-bold">Rp {kelas.price}K</span>

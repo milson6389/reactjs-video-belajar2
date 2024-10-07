@@ -20,7 +20,7 @@ const DashboardNavbar = () => {
     },
     {
       id: 2,
-      path: "/class",
+      path: "/classes",
       header: {
         title: "Daftar Kelas",
         desc: "Akses Materi Belajar dan Mulailah Meningkatkan Pengetahuan Anda!",

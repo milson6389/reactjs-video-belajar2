@@ -24,3 +24,7 @@ body {
   position: relative;
   z-index: -999;
 }
+
+main {
+  min-height: 68vh;
+}
