@@ -6,6 +6,7 @@ import KelasDetailPackage from "../components/kelas/KelasDetailPackage";
 import KelasParticipant from "../components/kelas/KelasParticipant";
 import Footer from "../components/layout/Footer";
 import KelasList from "../components/kelas/KelasList";
+import KelasAccordion from "../components/kelas/KelasAccordion";
 
 const ClassDetail = () => {
   const { id } = useParams();
@@ -100,6 +101,12 @@ const ClassDetail = () => {
                 <KelasParticipant data={kelasData} />
                 <KelasParticipant data={kelasData} />
               </div>
+            </Card>
+            <Card className="mb-5">
+              <h1 className="text-2xl font-bold">Kamu akan Mempelajari</h1>
+              {materiKelas.map((mk) => {
+                return <KelasAccordion key={mk.id} data={mk} />;
+              })}
             </Card>
             <Card className="mb-5">
               <h1 className="text-2xl font-bold">Rating dan Review</h1>
