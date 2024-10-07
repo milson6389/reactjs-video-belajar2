@@ -52,7 +52,7 @@ const DashboardNavbar = () => {
   );
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col w-full md:w-1/3 lg:w-1/4 xl:w-1/6">
       <h1 className="font-bold text-2xl">{currentPage.header.title}</h1>
       <p>{currentPage.header.desc}</p>
 
