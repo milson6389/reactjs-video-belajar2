@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const KelasDetailPackage = ({ data, packages }) => {
+const KelasDetailPackage = ({ data, packages, isReadOnly = false }) => {
   const navigate = useNavigate();
   const onClickBuyHandler = () => {
     navigate(`/checkout/${data.id}`);
@@ -18,15 +18,21 @@ const KelasDetailPackage = ({ data, packages }) => {
           Diskon 50%
         </span>
       </div>
-      <p className="text-sky-500 text-sm">
-        Penawaran spesial tersisa 2 hari lagi!
-      </p>
-      <button
-        onClick={onClickBuyHandler}
-        className="w-full bg-primary text-white rounded-md my-3"
-      >
-        Beli Sekarang
-      </button>
+
+      {!isReadOnly && (
+        <>
+          <p className="text-sky-500 text-sm">
+            Penawaran spesial tersisa 2 hari lagi!
+          </p>
+          <button
+            onClick={onClickBuyHandler}
+            className="w-full bg-primary text-white rounded-md my-3"
+          >
+            Beli Sekarang
+          </button>
+        </>
+      )}
+
       <h2 className="text-lg font-bold">Kelas ini Sudah Termasuk</h2>
       <div className="grid grid-cols-2 gap-5 my-3">
         {packages.map((cls) => {
