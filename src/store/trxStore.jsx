@@ -75,6 +75,14 @@ const trxStore = (set, get) => ({
       trxHistory: updatedTrx,
     }));
   },
+  deleteTrx: (id) => {
+    const trxes = get().trxHistory;
+    const updatedTrx = trxes.filter((trx) => trx.id != id);
+    localStorage.setItem("trx", JSON.stringify(updatedTrx));
+    set((state) => ({
+      trxHistory: updatedTrx,
+    }));
+  },
   setSelectedWOP: (wopObj) => {
     set(() => ({ selectedWOP: wopObj }));
   },

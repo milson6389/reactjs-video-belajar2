@@ -16,6 +16,7 @@ const Payment = () => {
   const classPackage = useCourseStore((state) => state.classPackage);
   const updateStep = useTrxStore((state) => state.updateProgress);
   const updateTrx = useTrxStore((state) => state.updateTrx);
+  const deleteTrx = useTrxStore((state) => state.deleteTrx);
   const isPending = useTrxStore((state) => state.selectedWOP.isMaintenance);
 
   const currencyFormatter = new Intl.NumberFormat("id-ID", {
@@ -25,9 +26,19 @@ const Payment = () => {
 
   const checkoutHandler = () => {
     const status = isPending ? "INP" : "DONE";
-    updateTrx(id, status);
+    const trx = {
+      id: id,
+      status: status,
+    };
+    updateTrx(trx);
     updateStep(1);
     navigate(`/status/${id}`);
+  };
+
+  const rollbackHandler = () => {
+    deleteTrx(id);
+    updateStep(-1);
+    navigate(`/checkout/${kelasData.id}`);
   };
 
   return (
@@ -55,12 +66,20 @@ const Payment = () => {
                   )}
                 </p>
               </div>
-              <button
-                onClick={checkoutHandler}
-                className="w-full bg-primary text-white rounded-md py-1"
-              >
-                Beli Sekarang
-              </button>
+              <div className="flex flex-col md:flex-row items-center gap-3">
+                <button
+                  onClick={rollbackHandler}
+                  className="w-full text-sm lg:text-base bg-white border border-primary text-primary rounded-md py-1"
+                >
+                  Ganti Metode Pembayaran
+                </button>
+                <button
+                  onClick={checkoutHandler}
+                  className="w-full text-sm lg:text-base bg-primary text-white rounded-md py-1"
+                >
+                  Beli Sekarang
+                </button>
+              </div>
             </Card>
           </div>
           <Card className="w-full md:w-2/5">
