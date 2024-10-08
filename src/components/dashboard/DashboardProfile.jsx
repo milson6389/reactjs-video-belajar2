@@ -32,9 +32,6 @@ const DashboardProfile = () => {
   const setFullNameHandler = (e) => {
     setFullName(e.target.value);
   };
-  const setEmailHandler = (e) => {
-    setEmail(e.target.value);
-  };
 
   const setPhoneDataHandler = (data) => {
     setPhoneData(data);
@@ -58,7 +55,6 @@ const DashboardProfile = () => {
 
     if (
       fullName !== "" &&
-      email !== "" &&
       phoneData !== "" &&
       password !== "" &&
       password2 == password
@@ -138,7 +134,7 @@ const DashboardProfile = () => {
             name="email"
             id="email"
             value={email}
-            onChange={(e) => setEmailHandler(e)}
+            disabled
             className="h-10 border px-1 border-slate-300 rounded-md focus:border focus:border-primary"
           />
           {!isValidEmail && (
