@@ -1,7 +1,7 @@
-import { useSelector } from "react-redux";
+import useTrxStore from "../../store/trxStore";
 
 const KelasPaymentProgress = () => {
-  const progressStep = useSelector((state) => state.trx.progress);
+  const progressStep = useTrxStore((state) => state.progress);
 
   return (
     <div className="relative flex justify-between items-center mx-8 my-3">

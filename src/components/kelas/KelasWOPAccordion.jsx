@@ -1,10 +1,10 @@
 import { useState } from "react";
 import Card from "../ui/Card";
-import { useDispatch, useSelector } from "react-redux";
-import { setSelectedWOP } from "../../store/trxSlice";
+import useTrxStore from "../../store/trxStore";
 
 const KelasWOPAccordion = ({ data }) => {
-  const dispatch = useDispatch();
+  const selectedWOP = useTrxStore((state) => state.selectedWOP.code);
+  const setSelectedWOP = useTrxStore((state) => state.setSelectedWOP);
   const [isOpen, setIsOpen] = useState(false);
 
   const setIsOpenHandler = () => {
@@ -12,10 +12,12 @@ const KelasWOPAccordion = ({ data }) => {
   };
 
   const setSelectedIdHandler = (code, admin) => {
-    dispatch(setSelectedWOP({ code, admin }));
+    const wopObj = {
+      code,
+      admin,
+    };
+    setSelectedWOP(wopObj);
   };
-
-  const selectedWOP = useSelector((state) => state.trx.selectedWOP).code;
 
   return (
     <>

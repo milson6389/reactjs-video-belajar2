@@ -2,29 +2,31 @@ import { useNavigate, useParams } from "react-router-dom";
 import KelasDetailPackage from "../components/kelas/KelasDetailPackage";
 import KelasPaymentProgress from "../components/kelas/KelasPaymentProgress";
 import Card from "../components/ui/Card";
-import { useDispatch, useSelector } from "react-redux";
 import KelasWOPAccordion from "../components/kelas/KelasWOPAccordion";
-import { addTrx, updateProgress } from "../store/trxSlice";
+import useCourseStore from "../store/courseStore";
+import useTrxStore from "../store/trxStore";
 
 const Checkout = () => {
-  const { id } = useParams();
-  const allKelasData = useSelector((state) => state.course.classes);
-  const kelasData = allKelasData.find((dt) => dt.id == id);
-  const classPackage = useSelector((state) => state.course.classPackage);
-  const wopData = useSelector((state) => state.trx.wop);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const { id } = useParams();
+
+  const allKelasData = useCourseStore((state) => state.classes);
+  const classPackage = useCourseStore((state) => state.classPackage);
+  const wopData = useTrxStore((state) => state.wop);
+  const adminFee = useTrxStore((state) => state.selectedWOP.admin);
+  const updateStep = useTrxStore((state) => state.updateProgress);
+
+  const kelasData = allKelasData.find((dt) => dt.id == id);
 
   const currencyFormatter = new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
   });
 
-  const adminFee = useSelector((state) => state.trx.selectedWOP).admin;
   const coursePrice = kelasData.price * 1000;
 
   const checkoutHandler = () => {
-    dispatch(updateProgress({ step: 1 }));
+    updateStep(1);
     navigate(`/payment/${kelasData.id}`);
   };
 
