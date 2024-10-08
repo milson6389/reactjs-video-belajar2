@@ -57,13 +57,13 @@ const trxStore = (set, get) => ({
       }));
     }
   },
-  updateTrx: (id, status) => {
+  updateTrx: (trxObj) => {
     const trxes = get().trxHistory;
     const updatedTrx = trxes?.map((trx) => {
-      if (trx.id == id) {
+      if (trx.id == trxObj.id) {
         return {
           ...trx,
-          status: status,
+          ...trxObj,
           paidDt: new Date().toLocaleString(),
         };
       } else {
