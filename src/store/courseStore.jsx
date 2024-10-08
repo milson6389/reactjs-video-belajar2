@@ -1,9 +1,9 @@
+import { create } from "zustand";
+
 import DataKelas from "../data/kelas.json";
 import DataKelasDetail from "../data/kelasMaterials.json";
 
-import { createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
+const courseStore = (set, get) => ({
   classes: DataKelas,
   classDetail: DataKelasDetail,
   classPackage: [
@@ -52,22 +52,15 @@ const initialState = {
       ),
     },
   ],
-};
-
-export const courseSlice = createSlice({
-  name: "course",
-  initialState,
-  reducers: {
-    filteredCourse: (state, action) => {
-      state.classes = DataKelas;
-      if (action.payload.ctg !== "") {
-        state.classes = state.classes.filter(
-          (cls) => cls.category == action.payload.ctg
-        );
-      }
-    },
+  filteredClass: (category) => {
+    const courses = get().classes;
+    if (category !== "") {
+      const filtered = courses.filter((c) => c.category == category);
+      set({ classes: filtered });
+    }
   },
+  resetFilter: () => set({ classes: DataKelas }),
 });
 
-export const { filteredCourse } = courseSlice.actions;
-export default courseSlice.reducer;
+const useCourseStore = create(courseStore);
+export default useCourseStore;

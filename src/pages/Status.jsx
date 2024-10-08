@@ -11,7 +11,7 @@ const Status = () => {
           <img src={Success} alt="success" />
           <h1 className="font-bold text-2xl">Pembayaran Berhasil!</h1>
           <p>
-            Silahkan cek email kamu untuk informasi lebih lanjut. Hubungi Kami
+            Silahkan cek Email kamu untuk informasi lebih lanjut. Hubungi Kami
             jika ada kendala.
           </p>
           <button className="bg-primary text-white rounded-md py-2 w-full md:w-1/2">

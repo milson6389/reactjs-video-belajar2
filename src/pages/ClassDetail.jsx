@@ -1,4 +1,3 @@
-import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import KelasDetailHeader from "../components/kelas/KelasDetailHeader";
 import Card from "../components/ui/Card";
@@ -7,16 +6,17 @@ import KelasParticipant from "../components/kelas/KelasParticipant";
 import Footer from "../components/layout/Footer";
 import KelasList from "../components/kelas/KelasList";
 import KelasAccordion from "../components/kelas/KelasAccordion";
+import useCourseStore from "../store/courseStore";
 
 const ClassDetail = () => {
   const { id } = useParams();
-  const allKelasData = useSelector((state) => state.course.classes);
+  const allKelasData = useCourseStore((state) => state.classes);
   const kelasData = allKelasData.find((dt) => dt.id == id);
   const relatedKelasData = allKelasData.filter(
     (dt) => dt.category == kelasData.category
   );
-  const materiKelas = useSelector((state) => state.course.classDetail);
-  const classPackage = useSelector((state) => state.course.classPackage);
+  const materiKelas = useCourseStore((state) => state.classDetail);
+  const classPackage = useCourseStore((state) => state.classPackage);
 
   return (
     <>
