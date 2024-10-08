@@ -5,6 +5,7 @@ import Card from "../components/ui/Card";
 import KelasWOPAccordion from "../components/kelas/KelasWOPAccordion";
 import useCourseStore from "../store/courseStore";
 import useTrxStore from "../store/trxStore";
+import useUserStore from "../store/userStore";
 
 const Checkout = () => {
   const navigate = useNavigate();
@@ -13,8 +14,11 @@ const Checkout = () => {
   const allKelasData = useCourseStore((state) => state.classes);
   const classPackage = useCourseStore((state) => state.classPackage);
   const wopData = useTrxStore((state) => state.wop);
-  const adminFee = useTrxStore((state) => state.selectedWOP.admin);
+  const selectedWOP = useTrxStore((state) => state.selectedWOP);
+  const adminFee = selectedWOP.admin;
   const updateStep = useTrxStore((state) => state.updateProgress);
+  const addTrx = useTrxStore((state) => state.addTrx);
+  const userInfo = useUserStore((state) => state.user);
 
   const kelasData = allKelasData.find((dt) => dt.id == id);
 
@@ -26,8 +30,22 @@ const Checkout = () => {
   const coursePrice = kelasData.price * 1000;
 
   const checkoutHandler = () => {
+    const generatedId = +new Date();
+    const newTrx = {
+      id: generatedId,
+      kelas_id: id,
+      email: userInfo.email,
+      wopCode: selectedWOP.code,
+      price: kelasData.price * 1000,
+      admin: adminFee,
+      va_no: `${selectedWOP.va_code} ${userInfo.no_hp.replace(
+        userInfo.no_hp.slice(0, 3),
+        "0"
+      )}`,
+    };
+    addTrx(newTrx);
     updateStep(1);
-    navigate(`/payment/${kelasData.id}`);
+    navigate(`/payment/${generatedId}`);
   };
 
   return (

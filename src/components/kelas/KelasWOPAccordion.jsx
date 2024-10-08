@@ -5,7 +5,7 @@ import useTrxStore from "../../store/trxStore";
 const KelasWOPAccordion = ({ data }) => {
   const selectedWOP = useTrxStore((state) => state.selectedWOP.code);
   const setSelectedWOP = useTrxStore((state) => state.setSelectedWOP);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const setIsOpenHandler = () => {
     setIsOpen(!isOpen);
