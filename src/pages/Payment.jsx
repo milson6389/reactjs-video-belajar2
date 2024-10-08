@@ -15,6 +15,8 @@ const Payment = () => {
   );
   const classPackage = useCourseStore((state) => state.classPackage);
   const updateStep = useTrxStore((state) => state.updateProgress);
+  const updateTrx = useTrxStore((state) => state.updateTrx);
+  const isPending = useTrxStore((state) => state.selectedWOP.isMaintenance);
 
   const currencyFormatter = new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -22,6 +24,8 @@ const Payment = () => {
   });
 
   const checkoutHandler = () => {
+    const status = isPending ? "INP" : "DONE";
+    updateTrx(id, status);
     updateStep(1);
     navigate(`/status/${id}`);
   };
