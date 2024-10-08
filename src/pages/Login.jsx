@@ -29,6 +29,7 @@ const Login = () => {
     if (emailVal !== "" && passVal !== "") {
       const tempUser = {
         email: emailVal,
+        password: passVal,
       };
       login(tempUser);
       navigate("/");

@@ -4,7 +4,7 @@ const KelasPaymentProgress = () => {
   const progressStep = useTrxStore((state) => state.progress);
 
   return (
-    <div className="relative flex justify-between items-center mx-8 my-3">
+    <div className="relative flex justify-between items-center mx-8 my-3 -z-30">
       <span className="text-primary mx-2">
         {progressStep >= 2 ? (
           <i className="fa-regular fa-circle-check mx-1"></i>

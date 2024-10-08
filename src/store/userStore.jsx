@@ -16,8 +16,8 @@ const userStore = (set, get) => ({
       uid: +new Date(),
       nama: "user 1", //default value karena belom ada database / table user
       email: userObj?.email,
-      password: "password", //default value karena belom ada database / table user
-      no_hp: "1234567890", //default value karena belom ada database / table user
+      password: userObj?.password,
+      no_hp: "+621234567890", //default value karena belom ada database / table user
     };
     set((state) => ({
       user: userInfo,
