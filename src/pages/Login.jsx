@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Google from "../assets/img/google_icon.webp";
 import { useRef, useState } from "react";
+import useUserStore from "../store/userStore";
 
 const Login = () => {
   const [toggleShow, setToggleShow] = useState(false);
@@ -9,6 +10,8 @@ const Login = () => {
   const emailInput = useRef();
   const passwordInput = useRef();
   const navigate = useNavigate();
+
+  const login = useUserStore((state) => state.login);
 
   const setToggleShowHandler = (e) => {
     e.preventDefault();
@@ -25,10 +28,9 @@ const Login = () => {
 
     if (emailVal !== "" && passVal !== "") {
       const tempUser = {
-        uid: +new Date(),
         email: emailVal,
       };
-      localStorage.setItem("user", JSON.stringify(tempUser));
+      login(tempUser);
       navigate("/");
     } else {
       if (emailVal == "") {

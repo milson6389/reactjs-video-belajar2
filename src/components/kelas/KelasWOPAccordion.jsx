@@ -11,11 +11,7 @@ const KelasWOPAccordion = ({ data }) => {
     setIsOpen(!isOpen);
   };
 
-  const setSelectedIdHandler = (code, admin) => {
-    const wopObj = {
-      code,
-      admin,
-    };
+  const setSelectedHandler = (wopObj) => {
     setSelectedWOP(wopObj);
   };
 
@@ -35,10 +31,7 @@ const KelasWOPAccordion = ({ data }) => {
         {isOpen &&
           data.sub.map((dt, id) => {
             return (
-              <li
-                key={id}
-                onClick={() => setSelectedIdHandler(dt.code, dt.admin)}
-              >
+              <li key={id} onClick={() => setSelectedHandler(dt)}>
                 <Card className="flex justify-between items-center my-1">
                   <span className="flex items-center gap-5 font-bold">
                     <img

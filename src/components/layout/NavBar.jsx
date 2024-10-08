@@ -1,13 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/img/logo.png";
 import Profile from "../../assets/img/profile.png";
+import useUserStore from "../../store/userStore";
 
 const NavBar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const navigate = useNavigate();
-  const isLoggedIn = localStorage.getItem("user") != null;
+  const isLoggedIn = useUserStore((state) => state.isLoggedIn);
+  const logout = useUserStore((state) => state.logout);
 
   const setIsMobileHandler = () => {
     setIsMobile(!isMobile);
@@ -22,7 +24,7 @@ const NavBar = () => {
 
   const logoutHandler = () => {
     if (confirm("Logout ?")) {
-      localStorage.removeItem("user");
+      logout();
       setIsMobile(false);
       onPageChangeHandler();
       navigate("/login");

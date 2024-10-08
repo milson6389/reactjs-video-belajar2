@@ -12,7 +12,6 @@ const Payment = () => {
   const allKelasData = useCourseStore((state) => state.classes);
   const classPackage = useCourseStore((state) => state.classPackage);
   const kelasData = allKelasData.find((dt) => dt.id == id);
-  const wopData = useTrxStore((state) => state.wop);
   const adminFee = useTrxStore((state) => state.selectedWOP.admin);
   const updateStep = useTrxStore((state) => state.updateProgress);
   const coursePrice = kelasData.price * 1000;

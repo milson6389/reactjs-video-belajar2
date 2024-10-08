@@ -7,17 +7,27 @@ const trxStore = (set, get) => ({
   progress: 1,
   trxHistory: [],
   selectedWOP: {
+    title: "",
     code: "",
+    va_code: "",
     admin: 0,
+    img: "",
+    isMaintenance: false,
   },
   updateProgress: (progressVal) =>
     set((state) => ({ progress: state.progress + progressVal })),
   setSelectedWOP: (wopObj) => {
-    set((state) => ({
+    set(() => ({ selectedWOP: wopObj }));
+  },
+  resetTrx: () => {
+    set(() => ({
       selectedWOP: {
-        ...state.selectedWOP,
-        code: wopObj.code,
-        admin: wopObj.admin,
+        title: "",
+        code: "",
+        va_code: "",
+        admin: 0,
+        img: "",
+        isMaintenance: false,
       },
     }));
   },
