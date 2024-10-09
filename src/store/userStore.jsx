@@ -65,6 +65,8 @@ const userStore = (set, get) => ({
       isLoggedIn: false,
     }));
     localStorage.removeItem("user");
+    localStorage.removeItem("trx");
+    localStorage.removeItem("course");
   },
 });
 

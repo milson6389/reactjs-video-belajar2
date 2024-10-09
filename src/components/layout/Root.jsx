@@ -1,15 +1,16 @@
-import { Fragment } from "react";
+import { Fragment, Suspense } from "react";
 import { Outlet } from "react-router-dom";
 
 import NavBar from "./NavBar";
+import Spinner from "../ui/Spinner";
 
 const Root = () => {
   return (
     <Fragment>
       <NavBar />
-      <div>
+      <Suspense fallback={<Spinner />}>
         <Outlet />
-      </div>
+      </Suspense>
     </Fragment>
   );
 };

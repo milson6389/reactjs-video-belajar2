@@ -1,19 +1,20 @@
+import { lazy } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import Root from "./components/layout/Root";
 import Public from "./components/layout/Public";
 import Private from "./components/layout/Private";
 
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Profile from "./pages/Profile";
-import Classes from "./pages/Classes";
-import Orders from "./pages/Orders";
-import ClassDetail from "./pages/ClassDetail";
-import Checkout from "./pages/Checkout";
-import Payment from "./pages/Payment";
-import Status from "./pages/Status";
+const Home = lazy(() => import("./pages/Home"));
+const Login = lazy(() => import("./pages/Login"));
+const Register = lazy(() => import("./pages/Register"));
+const Profile = lazy(() => import("./pages/Profile"));
+const Classes = lazy(() => import("./pages/Classes"));
+const Orders = lazy(() => import("./pages/Orders"));
+const ClassDetail = lazy(() => import("./pages/ClassDetail"));
+const Checkout = lazy(() => import("./pages/Checkout"));
+const Payment = lazy(() => import("./pages/Payment"));
+const Status = lazy(() => import("./pages/Status"));
 
 function App() {
   const router = createBrowserRouter([
@@ -48,15 +49,27 @@ function App() {
         },
         {
           path: "/checkout/:id",
-          element: <Checkout />,
+          element: (
+            <Private>
+              <Checkout />
+            </Private>
+          ),
         },
         {
           path: "/payment/:id",
-          element: <Payment />,
+          element: (
+            <Private>
+              <Payment />
+            </Private>
+          ),
         },
         {
           path: "/status/:id",
-          element: <Status />,
+          element: (
+            <Private>
+              <Status />
+            </Private>
+          ),
         },
         {
           path: "/profile",
