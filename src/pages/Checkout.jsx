@@ -16,7 +16,6 @@ const Checkout = () => {
   const wopData = useTrxStore((state) => state.wop);
   const selectedWOP = useTrxStore((state) => state.selectedWOP);
   const adminFee = selectedWOP.admin;
-  const updateStep = useTrxStore((state) => state.updateProgress);
   const addTrx = useTrxStore((state) => state.addTrx);
   const userInfo = useUserStore((state) => state.user);
 
@@ -44,7 +43,6 @@ const Checkout = () => {
       )}`,
     };
     addTrx(newTrx);
-    updateStep(1);
     navigate(`/payment/${generatedId}`);
   };
 

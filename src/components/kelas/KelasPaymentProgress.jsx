@@ -1,7 +1,15 @@
-import useTrxStore from "../../store/trxStore";
+import { useLocation } from "react-router-dom";
 
 const KelasPaymentProgress = () => {
-  const progressStep = useTrxStore((state) => state.progress);
+  const location = useLocation();
+  let progressStep = 1;
+  if (location.pathname.includes("checkout")) {
+    progressStep = 1;
+  } else if (location.pathname.includes("payment")) {
+    progressStep = 2;
+  } else if (location.pathname.includes("status")) {
+    progressStep = 3;
+  }
 
   return (
     <div className="relative flex justify-between items-center mx-8 my-3 -z-30">

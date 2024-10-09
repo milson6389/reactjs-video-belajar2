@@ -1,10 +1,11 @@
 import { create } from "zustand";
 
 import DataWOP from "../data/wop.json";
+import DataPaymentGuide from "../data/paymentStep.json";
 
 const trxStore = (set, get) => ({
   wop: DataWOP,
-  progress: 1,
+  paymentStepGuide: DataPaymentGuide,
   trxHistory: localStorage.getItem("trx")
     ? JSON.parse(localStorage.getItem("trx"))
     : [],
@@ -16,8 +17,6 @@ const trxStore = (set, get) => ({
     img: "",
     isMaintenance: false,
   },
-  updateProgress: (progressVal) =>
-    set((state) => ({ progress: state.progress + progressVal })),
   addTrx: (trxObj) => {
     const tgl = new Date().getDate().toString();
     const month = (new Date().getMonth() + 1).toString();
@@ -85,6 +84,16 @@ const trxStore = (set, get) => ({
   },
   setSelectedWOP: (wopObj) => {
     set(() => ({ selectedWOP: wopObj }));
+  },
+  getWOPDetailByCode: (code) => {
+    const wops = get().wop;
+    for (let i = 0; i < wops.length; i++) {
+      for (let j = 0; j < wops[i].sub.length; j++) {
+        if (wops[i].sub[j].code == code) {
+          set(() => ({ selectedWOP: wops[i].sub[j] }));
+        }
+      }
+    }
   },
   resetTrx: () => {
     set(() => ({
