@@ -1,11 +1,18 @@
 import { useRef, useState } from "react";
 
-const DashboardFilter = ({ navData, queries, categories }) => {
+const DashboardFilter = ({
+  navData,
+  queries,
+  categories,
+  isCategoryFilterOn = true,
+}) => {
   const search = useRef();
   const [activeIdx, setActiveIdx] = useState(1);
   const setActiveHandler = (id, code = "") => {
     setActiveIdx(id);
-    categories(code);
+    if (isCategoryFilterOn) {
+      categories(code);
+    }
   };
   const userInputHandler = () => {
     queries(search.current.value);

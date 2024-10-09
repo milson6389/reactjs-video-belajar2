@@ -1,10 +1,23 @@
 import Footer from "../components/layout/Footer";
 import DashboardNavbar from "../components/dashboard/dashboardNavbar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DashboardFilter from "../components/dashboard/DashboardFilter";
 import Card from "../components/ui/Card";
+import CourseList from "../components/course/CourseList";
+import useCourseStore from "../store/courseStore";
+import useTrxStore from "../store/trxStore";
 
 const Classes = () => {
+  const setupCourseData = useCourseStore((state) => state.setPaidClassList);
+  const allTrx = useTrxStore((state) => state.trxHistory);
+  const paidClassId = allTrx
+    .filter((trx) => trx.status.toLowerCase() == "DONE".toLowerCase())
+    .map((t) => t.kelas_id);
+
+  useEffect(() => {
+    setupCourseData(paidClassId);
+  }, [paidClassId]);
+
   const [query, setQuery] = useState("");
   const navLinks = [
     {
@@ -33,7 +46,12 @@ const Classes = () => {
         <div className="flex flex-col md:flex-row w-full gap-5 md:gap-20">
           <DashboardNavbar />
           <Card className="w-full">
-            <DashboardFilter navData={navLinks} queries={setQueryHandler} />
+            <DashboardFilter
+              navData={navLinks}
+              queries={setQueryHandler}
+              isCategoryFilterOn={false}
+            />
+            <CourseList />
           </Card>
         </div>
       </main>

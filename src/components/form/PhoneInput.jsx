@@ -70,7 +70,7 @@ const PhoneInput = ({
   return (
     <div className="flex flex-col items-start mb-3">
       <label htmlFor="phone">
-        No. Hp <span className="text-red">*</span>
+        No. Hp <span className="text-red-500">*</span>
       </label>
       <div className="grid grid-cols-3 w-full gap-3">
         <div className="col-span-1 relative">
@@ -128,7 +128,7 @@ const PhoneInput = ({
         />
       </div>
       {!isValidPhone && (
-        <span className="text-red">*Nomor Hp tidak boleh kosong</span>
+        <span className="text-red-500">*Nomor Hp tidak boleh kosong</span>
       )}
     </div>
   );

@@ -80,7 +80,7 @@ const NavBar = () => {
               <Link to="/order">Pesanan Saya</Link>
             </li>
             <li>
-              <button onClick={logoutHandler} className="text-red">
+              <button onClick={logoutHandler} className="text-red-500">
                 Keluar
                 <i className="mx-1 fa-solid fa-arrow-right-from-bracket"></i>
               </button>
@@ -125,7 +125,7 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li className="p-4 hover:bg-slate-300">
-                  <button onClick={logoutHandler} className="text-red">
+                  <button onClick={logoutHandler} className="text-red-500">
                     Keluar
                     <i className="mx-1 fa-solid fa-arrow-right-from-bracket"></i>
                   </button>

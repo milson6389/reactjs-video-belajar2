@@ -60,10 +60,10 @@ const courseStore = (set, get) => ({
       set({ classes: filtered });
     }
   },
-  getPaidClassList: (arrKelasId) => {
+  setPaidClassList: (arrKelasId) => {
     const allClasses = get().classes;
-    const temp = allClasses.filter((x) => arrKelasId.includes(Number(x.id)));
-    set((state) => ({ paidCourse: [...state.paidCourse, ...temp] }));
+    const temp = allClasses.filter((x) => arrKelasId.includes(x.id.toString()));
+    set(() => ({ paidCourse: [...new Set(temp)] }));
   },
   resetFilter: () => set({ classes: DataKelas }),
 });

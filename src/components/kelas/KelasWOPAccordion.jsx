@@ -43,7 +43,7 @@ const KelasWOPAccordion = ({ data }) => {
                     {dt.title}
                   </span>
                   {selectedWOP == dt.code && (
-                    <i className="fa-regular fa-circle-check text-red"></i>
+                    <i className="fa-regular fa-circle-check text-red-500"></i>
                   )}
                 </Card>
               </li>

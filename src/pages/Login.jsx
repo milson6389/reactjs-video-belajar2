@@ -56,7 +56,7 @@ const Login = () => {
         <div className="my-5">
           <div className="flex flex-col items-start mb-3">
             <label htmlFor="email">
-              E-Mail <span className="text-red">*</span>
+              E-Mail <span className="text-red-500">*</span>
             </label>
             <input
               type="email"
@@ -67,12 +67,12 @@ const Login = () => {
               className="w-full border rounded-md h-10"
             />
             {!isValidEmail && (
-              <span className="text-red">*Email tidak boleh kosong</span>
+              <span className="text-red-500">*Email tidak boleh kosong</span>
             )}
           </div>
           <div className="flex flex-col items-start mb-3 relative">
             <label htmlFor="password">
-              Kata Sandi <span className="text-red">*</span>
+              Kata Sandi <span className="text-red-500">*</span>
             </label>
             <input
               type={toggleShow ? "text" : "password"}
@@ -93,7 +93,7 @@ const Login = () => {
               )}
             </button>
             {!isValidPassword && (
-              <span className="text-red">*Password tidak boleh kosong</span>
+              <span className="text-red-500">*Password tidak boleh kosong</span>
             )}
           </div>
           <div className="flex justify-end mb-3">

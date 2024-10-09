@@ -106,7 +106,7 @@ const DashboardProfile = () => {
         <div className="flex flex-col items-start gap-3">
           <h1 className="text-2xl">{loggedInUserInfo.nama}</h1>
           <p className="text-md">{loggedInUserInfo.email}</p>
-          <button className="text-red">Ganti Foto Profil</button>
+          <button className="text-red-500">Ganti Foto Profil</button>
         </div>
       </div>
 
@@ -116,7 +116,7 @@ const DashboardProfile = () => {
       >
         <div className="flex flex-col mb-3">
           <label htmlFor="name" className="focus:text-primary">
-            Nama Lengkap <span className="text-red">*</span>
+            Nama Lengkap <span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -127,12 +127,12 @@ const DashboardProfile = () => {
             className="h-10 border px-1 border-slate-300 rounded-md focus:border focus:border-primary"
           />
           {!isValidName && (
-            <span className="text-red">*Nama tidak boleh kosong</span>
+            <span className="text-red-500">*Nama tidak boleh kosong</span>
           )}
         </div>
         <div className="flex flex-col mb-3">
           <label htmlFor="email">
-            E-Mail <span className="text-red">*</span>
+            E-Mail <span className="text-red-500">*</span>
           </label>
           <input
             type="email"
@@ -143,7 +143,7 @@ const DashboardProfile = () => {
             className="h-10 border px-1 border-slate-300 rounded-md focus:border focus:border-primary"
           />
           {!isValidEmail && (
-            <span className="text-red">*Email tidak boleh kosong</span>
+            <span className="text-red-500">*Email tidak boleh kosong</span>
           )}
         </div>
         <PhoneInput
@@ -154,7 +154,7 @@ const DashboardProfile = () => {
         />
         <div className="flex flex-col items-start mb-3 relative">
           <label htmlFor="password">
-            Password <span className="text-red">*</span>
+            Password <span className="text-red-500">*</span>
           </label>
           <input
             type={toggleShow ? "text" : "password"}
@@ -175,12 +175,12 @@ const DashboardProfile = () => {
             )}
           </button>
           {!isValidPassword && (
-            <span className="text-red">*Kata Sandi tidak boleh kosong</span>
+            <span className="text-red-500">*Kata Sandi tidak boleh kosong</span>
           )}
         </div>
         <div className="flex flex-col items-start mb-3 relative">
           <label htmlFor="password2">
-            Konfirmasi Password <span className="text-red">*</span>
+            Konfirmasi Password <span className="text-red-500">*</span>
           </label>
           <input
             type={toggleShow ? "text" : "password"}
@@ -201,10 +201,10 @@ const DashboardProfile = () => {
             )}
           </button>
           {!isValidPassword2 && (
-            <span className="text-red">*Kata Sandi tidak boleh kosong</span>
+            <span className="text-red-500">*Kata Sandi tidak boleh kosong</span>
           )}
           {!isPasswordMatch && (
-            <span className="text-red">
+            <span className="text-red-500">
               *Kata Sandi & Konfirmasi Kata Sandi tidak sama
             </span>
           )}

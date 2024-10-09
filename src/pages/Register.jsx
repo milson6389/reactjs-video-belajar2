@@ -101,7 +101,7 @@ const Register = () => {
         <div className="my-5">
           <div className="flex flex-col items-start mb-3">
             <label htmlFor="nama">
-              Nama Lengkap <span className="text-red">*</span>
+              Nama Lengkap <span className="text-red-500">*</span>
             </label>
             <input
               type="text"
@@ -111,12 +111,12 @@ const Register = () => {
               className="w-full border rounded-md h-10"
             />
             {!isValidName && (
-              <span className="text-red">*Nama tidak boleh kosong</span>
+              <span className="text-red-500">*Nama tidak boleh kosong</span>
             )}
           </div>
           <div className="flex flex-col items-start mb-3">
             <label htmlFor="email">
-              E-Mail <span className="text-red">*</span>
+              E-Mail <span className="text-red-500">*</span>
             </label>
             <input
               type="email"
@@ -126,7 +126,7 @@ const Register = () => {
               className="w-full border rounded-md h-10"
             />
             {!isValidEmail && (
-              <span className="text-red">*Email tidak boleh kosong</span>
+              <span className="text-red-500">*Email tidak boleh kosong</span>
             )}
           </div>
           <PhoneInput
@@ -136,7 +136,7 @@ const Register = () => {
           />
           <div className="flex flex-col items-start mb-3 relative">
             <label htmlFor="password">
-              Kata Sandi <span className="text-red">*</span>
+              Kata Sandi <span className="text-red-500">*</span>
             </label>
             <input
               type={toggleShow ? "text" : "password"}
@@ -156,12 +156,14 @@ const Register = () => {
               )}
             </button>
             {!isValidPassword && (
-              <span className="text-red">*Kata Sandi tidak boleh kosong</span>
+              <span className="text-red-500">
+                *Kata Sandi tidak boleh kosong
+              </span>
             )}
           </div>
           <div className="flex flex-col items-start mb-3 relative">
             <label htmlFor="password2">
-              Konfirmasi Kata Sandi <span className="text-red">*</span>
+              Konfirmasi Kata Sandi <span className="text-red-500">*</span>
             </label>
             <input
               type={toggleShow ? "text" : "password"}
@@ -181,10 +183,12 @@ const Register = () => {
               )}
             </button>
             {!isValidPassword2 && (
-              <span className="text-red">*Kata Sandi tidak boleh kosong</span>
+              <span className="text-red-500">
+                *Kata Sandi tidak boleh kosong
+              </span>
             )}
             {!isPasswordMatch && (
-              <span className="text-red">
+              <span className="text-red-500">
                 *Kata Sandi & Konfirmasi Kata Sandi tidak sama
               </span>
             )}

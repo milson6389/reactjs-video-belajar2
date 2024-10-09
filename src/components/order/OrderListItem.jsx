@@ -10,7 +10,7 @@ const OrderListItem = ({ data }) => {
 
   if (data.status == "INP") {
     status.label = "Gagal";
-    status.style = "bg-red";
+    status.style = "bg-red-500";
   }
   if (data.status == "PENDING") {
     status.label = "Belum Bayar";

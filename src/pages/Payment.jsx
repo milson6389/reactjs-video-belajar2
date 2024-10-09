@@ -69,7 +69,7 @@ const Payment = () => {
                   </p>
                   <div className="flex items-center gap-3">
                     <p className="text-slate-500">{currentTrx.va_no}</p>
-                    <button className="text-red">Salin</button>
+                    <button className="text-red-500">Salin</button>
                   </div>
                 </Card>
               </section>
