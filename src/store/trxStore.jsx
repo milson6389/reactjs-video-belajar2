@@ -107,6 +107,21 @@ const trxStore = (set, get) => ({
       },
     }));
   },
+  filteredTrx: (arrKelasId) => {
+    const filteredTrx = get().trxHistory;
+    const temp = filteredTrx.filter((x) =>
+      arrKelasId.includes(Number(x.kelas_id))
+    );
+    set(() => ({ trxHistory: temp }));
+  },
+  resetFilter: () => {
+    const data = localStorage.getItem("trx")
+      ? JSON.parse(localStorage.getItem("trx"))
+      : [];
+    set(() => ({
+      trxHistory: data,
+    }));
+  },
 });
 
 const useTrxStore = create(trxStore);

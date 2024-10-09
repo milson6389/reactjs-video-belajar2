@@ -94,12 +94,14 @@ const Payment = () => {
               </section>
               <div className="flex flex-col md:flex-row items-center gap-3">
                 <button
+                  disabled={currentTrx.status == "DONE"}
                   onClick={rollbackHandler}
                   className="w-full text-sm lg:text-base bg-white border border-primary text-primary rounded-md py-1"
                 >
                   Ganti Metode Pembayaran
                 </button>
                 <button
+                  disabled={currentTrx.status == "DONE"}
                   onClick={checkoutHandler}
                   className="w-full text-sm lg:text-base bg-primary text-white rounded-md py-1"
                 >

@@ -3,9 +3,15 @@ import Card from "../components/ui/Card";
 import Success from "../assets/img/payment_success.png";
 import Pending from "../assets/img/payment_inp.png";
 import useTrxStore from "../store/trxStore";
+import { useNavigate } from "react-router-dom";
 
 const Status = () => {
   const isPending = useTrxStore((state) => state.selectedWOP.isMaintenance);
+  const navigate = useNavigate();
+
+  const checkDetailHandler = () => {
+    navigate("/order");
+  };
   return (
     <section>
       <KelasPaymentProgress />
@@ -26,7 +32,10 @@ const Status = () => {
             Silahkan cek Email kamu untuk informasi lebih lanjut. Hubungi Kami
             jika ada kendala.
           </p>
-          <button className="bg-primary text-white rounded-md py-2 w-full md:w-1/2">
+          <button
+            onClick={checkDetailHandler}
+            className="bg-primary text-white rounded-md py-2 w-full md:w-1/2"
+          >
             Lihat Detail Pesanan
           </button>
         </Card>

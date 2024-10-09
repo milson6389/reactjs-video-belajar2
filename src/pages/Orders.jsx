@@ -3,8 +3,14 @@ import DashboardNavbar from "../components/dashboard/dashboardNavbar";
 import DashboardFilter from "../components/dashboard/DashboardFilter";
 import { useState } from "react";
 import Card from "../components/ui/Card";
+import OrderList from "../components/order/OrderList";
+import useCourseStore from "../store/courseStore";
+import useTrxStore from "../store/trxStore";
 
 const Orders = () => {
+  const allCourse = useCourseStore((state) => state.classes);
+  const filterTrx = useTrxStore((state) => state.filteredTrx);
+  const resetFilter = useTrxStore((state) => state.resetFilter);
   const [query, setQuery] = useState("");
   const navLinks = [
     {
@@ -31,6 +37,13 @@ const Orders = () => {
 
   const setQueryHandler = (keyword) => {
     setQuery(keyword);
+    const temp = allCourse
+      .filter((course) =>
+        course.title.toLowerCase().includes(keyword.toLowerCase())
+      )
+      .map((t) => t.id);
+    resetFilter();
+    filterTrx(temp);
   };
 
   return (
@@ -40,6 +53,7 @@ const Orders = () => {
           <DashboardNavbar />
           <Card className="w-full">
             <DashboardFilter navData={navLinks} queries={setQueryHandler} />
+            <OrderList />
           </Card>
         </div>
       </main>
