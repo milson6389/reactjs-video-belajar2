@@ -19,12 +19,12 @@ const Status = () => {
         <Card className="flex flex-col items-center justify-center gap-5 p-5">
           {isPending ? (
             <>
-              <img src={Pending} alt="pending" />
+              <img src={Pending} alt="pending" loading="lazy" />
               <h1 className="font-bold text-2xl">Pembayaran Tertunda!</h1>
             </>
           ) : (
             <>
-              <img src={Success} alt="success" />
+              <img src={Success} alt="success" loading="lazy" />
               <h1 className="font-bold text-2xl">Pembayaran Berhasil!</h1>
             </>
           )}

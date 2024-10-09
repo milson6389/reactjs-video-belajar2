@@ -219,7 +219,12 @@ const Register = () => {
               to="/"
               className="flex justify-center items-center border rounded-md h-10"
             >
-              <img src={Google} alt="Google" className="w-[25px] h-[25px]" />
+              <img
+                src={Google}
+                alt="Google"
+                className="w-[25px] h-[25px]"
+                loading="lazy"
+              />
               Daftar dengan Google
             </Link>
           </div>

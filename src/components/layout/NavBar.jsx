@@ -37,7 +37,12 @@ const NavBar = () => {
         <div className="z-10 mx-5">
           <div className="flex justify-between items-center">
             <Link to="/">
-              <img className="w-1/3 z-10" src={Logo} alt="Logo" />
+              <img
+                className="w-1/3 z-10"
+                src={Logo}
+                alt="Logo"
+                loading="lazy"
+              />
             </Link>
             {isLoggedIn ? (
               <button
@@ -85,7 +90,7 @@ const NavBar = () => {
       </nav>
       <nav className="mx-5 hidden md:flex justify-between items-center">
         <Link to="/">
-          <img className="w-1/3 z-10" src={Logo} alt="Logo" />
+          <img className="w-1/3 z-10" src={Logo} alt="Logo" loading="lazy" />
         </Link>
         {isLoggedIn ? (
           <div className="flex items-center gap-5">
@@ -96,6 +101,7 @@ const NavBar = () => {
                   src={Profile}
                   alt="profile"
                   className="w-[50px] h-[50px] rounded-md relative"
+                  loading="lazy"
                 />
               </button>
               <ul

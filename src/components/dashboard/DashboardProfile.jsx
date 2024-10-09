@@ -97,7 +97,12 @@ const DashboardProfile = () => {
   return (
     <div className="flex flex-col items-start p-3 border border-slate-300 rounded-md bg-white w-full">
       <div className="flex justify-start gap-5 md:gap-10 w-full">
-        <img src={ProfileImage} alt="profile_image" className="w-[100px]" />
+        <img
+          src={ProfileImage}
+          alt="profile_image"
+          className="w-[100px]"
+          loading="lazy"
+        />
         <div className="flex flex-col items-start gap-3">
           <h1 className="text-2xl">{loggedInUserInfo.nama}</h1>
           <p className="text-md">{loggedInUserInfo.email}</p>

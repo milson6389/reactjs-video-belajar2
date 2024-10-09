@@ -4,6 +4,7 @@ import DataKelas from "../data/kelas.json";
 import DataKelasDetail from "../data/kelasMaterials.json";
 
 const courseStore = (set, get) => ({
+  paidCourse: [],
   classes: DataKelas,
   classDetail: DataKelasDetail,
   classPackage: [
@@ -58,6 +59,11 @@ const courseStore = (set, get) => ({
       const filtered = courses.filter((c) => c.category == category);
       set({ classes: filtered });
     }
+  },
+  getPaidClassList: (arrKelasId) => {
+    const allClasses = get().classes;
+    const temp = allClasses.filter((x) => arrKelasId.includes(Number(x.id)));
+    set((state) => ({ paidCourse: [...state.paidCourse, ...temp] }));
   },
   resetFilter: () => set({ classes: DataKelas }),
 });

@@ -77,7 +77,12 @@ const Footer = () => {
       <div className="m-5 p-5">
         <div className="flex flex-col md:flex-row md:items-center justify-between my-3">
           <div className="flex flex-col">
-            <img src={Logo} alt="VideoBelajar" className="w-10/12 md:w-1/2" />
+            <img
+              src={Logo}
+              alt="VideoBelajar"
+              className="w-10/12 md:w-1/2"
+              loading="lazy"
+            />
             <h3 className="text-2xl font-bold">
               Gali Potensi Anda Melalui Pembelajaran Video di hariesok.id
             </h3>

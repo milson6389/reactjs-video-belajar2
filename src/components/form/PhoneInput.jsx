@@ -82,6 +82,7 @@ const PhoneInput = ({
               src={ddlVal.flag}
               alt={ddlVal.country}
               className="w-[20px] h-[20px]"
+              loading="lazy"
             />
             <div className="flex justify-between items-center w-full">
               <span>{ddlVal.code}</span>
@@ -105,6 +106,7 @@ const PhoneInput = ({
                       src={temp.flag}
                       alt={temp.country}
                       className="w-[20px] h-[20px]"
+                      loading="lazy"
                     />
                     <span>{temp.code}</span>
                   </button>

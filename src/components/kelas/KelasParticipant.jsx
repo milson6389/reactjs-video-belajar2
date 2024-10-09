@@ -10,6 +10,7 @@ const KelasParticipant = ({ data, rating = 0 }) => {
           src={ProfileImg}
           alt={data.lecturer_name}
           className="w-[50px] rounded-md"
+          loading="lazy"
         />
         <div className="flex flex-col">
           <h3 className="text-lg">{data.lecturer_name}</h3>

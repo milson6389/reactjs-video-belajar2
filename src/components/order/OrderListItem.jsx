@@ -54,6 +54,7 @@ const OrderListItem = ({ data }) => {
               src={courseInfo.thumbnail}
               alt={courseInfo.title}
               className="w-[50px]"
+              loading="lazy"
             />
             <h1 className="font-bold">{courseInfo.title}</h1>
           </div>

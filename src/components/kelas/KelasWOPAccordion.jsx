@@ -38,6 +38,7 @@ const KelasWOPAccordion = ({ data }) => {
                       src={dt.img}
                       alt={dt.title}
                       className="w-[50px] h-12 object-contain"
+                      loading="lazy"
                     />
                     {dt.title}
                   </span>

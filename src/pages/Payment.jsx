@@ -62,6 +62,7 @@ const Payment = () => {
                     className="w-[50px]"
                     src={currentTrxWopInfo.img}
                     alt={currentTrxWopInfo.title}
+                    loading="lazy"
                   />
                   <p className="font-bold">
                     Bayar melalui {currentTrxWopInfo.title}
