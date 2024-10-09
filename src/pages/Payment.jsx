@@ -19,7 +19,7 @@ const Payment = () => {
   const dataPaymentGuide = useTrxStore((state) => state.paymentStepGuide);
   const classPackage = useCourseStore((state) => state.classPackage);
   const updateTrx = useTrxStore((state) => state.updateTrx);
-  const deleteTrx = useTrxStore((state) => state.deleteTrx);
+  const addCourse = useCourseStore((state) => state.addCourse);
   const isPending = useTrxStore((state) => state.selectedWOP.isMaintenance);
 
   useEffect(() => {
@@ -41,6 +41,9 @@ const Payment = () => {
       paidDt: new Date().toLocaleString(),
     };
     updateTrx(trx);
+    if (!isPending) {
+      addCourse(Number(currentTrx.kelas_id));
+    }
     navigate(`/status/${id}`);
   };
 

@@ -46,7 +46,7 @@ const DashboardFilter = ({
             type="text"
             ref={search}
             onChange={userInputHandler}
-            className="border border-slate-300 rounded-md h-8 w-full"
+            className="border border-slate-300 rounded-md h-8 w-full p-2"
           />
         </div>
       </div>

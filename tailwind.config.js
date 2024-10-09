@@ -15,6 +15,7 @@ export default {
       secondary: "#f64820",
       warning: "#febd3b",
       cream: "#fffcf2",
+      lime: "#fafef7",
       transparent: "transparent",
       current: "currentColor",
       red: colors.red,

@@ -3,10 +3,10 @@ import KelasInfo from "../kelas/KelasInfo";
 
 const CourseListItem = ({ data }) => {
   return (
-    <Card className="flex flex-col gap-1 my-2 px-0 bg-[#fafef7]">
+    <Card className="flex flex-col gap-1 my-2 px-0 bg-lime">
       <section className="py-1 px-2">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center me-3 text-sm md:text-base">
-          <span className="text-slate-400">0/12 Modul Terselesaikan</span>
+          <span className="font-bold">0/12 Modul Terselesaikan</span>
           <span className={`text-white rounded-md px-2 bg-warning`}>
             Sedang Berjalan
           </span>

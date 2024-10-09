@@ -27,7 +27,7 @@ const OrderListItem = ({ data }) => {
   );
 
   return (
-    <Card className="flex flex-col gap-1 my-2 px-0 bg-[#fafef7]">
+    <Card className="flex flex-col gap-1 my-2 px-0 bg-lime">
       <section className="px-2">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center me-3 text-sm md:text-base">
           <span className="text-slate-400">
