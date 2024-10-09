@@ -57,6 +57,7 @@ const PhoneInput = ({
   const selectedPhoneHandler = (e, data) => {
     e.preventDefault();
     setDdlVal(data);
+    setPhoneInput(""); //if change country code, reset the phone number input
     setShowDropDown(false);
   };
 
@@ -121,6 +122,7 @@ const PhoneInput = ({
           value={phoneInput}
           onChange={(e) => setPhoneInputHandler(e)}
           onBlur={(e) => onUserInputHandler(e)}
+          required
         />
       </div>
       {!isValidPhone && (
