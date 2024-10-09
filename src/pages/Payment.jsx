@@ -38,14 +38,14 @@ const Payment = () => {
     const trx = {
       id: id,
       status: status,
+      paidDt: new Date().toLocaleString(),
     };
     updateTrx(trx);
     navigate(`/status/${id}`);
   };
 
   const rollbackHandler = () => {
-    deleteTrx(id);
-    navigate(`/checkout/${kelasData.id}`);
+    navigate(`/checkout/${kelasData.id}`, { state: { trx: currentTrx } });
   };
 
   return (

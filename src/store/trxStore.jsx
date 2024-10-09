@@ -63,7 +63,6 @@ const trxStore = (set, get) => ({
         return {
           ...trx,
           ...trxObj,
-          paidDt: new Date().toLocaleString(),
         };
       } else {
         return trx;
@@ -106,6 +105,15 @@ const trxStore = (set, get) => ({
         isMaintenance: false,
       },
     }));
+  },
+  filterTrxByCategory: (ctg) => {
+    const filteredTrx = get().trxHistory;
+    if (ctg !== "") {
+      const temp = filteredTrx.filter(
+        (x) => x.status.toLowerCase() == ctg.toLowerCase()
+      );
+      set(() => ({ trxHistory: temp }));
+    }
   },
   filteredTrx: (arrKelasId) => {
     const filteredTrx = get().trxHistory;

@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
 
-const DashboardFilter = ({ navData, queries }) => {
+const DashboardFilter = ({ navData, queries, categories }) => {
   const search = useRef();
   const [activeIdx, setActiveIdx] = useState(1);
   const setActiveHandler = (id, code = "") => {
     setActiveIdx(id);
+    categories(code);
   };
   const userInputHandler = () => {
     queries(search.current.value);
@@ -18,7 +19,7 @@ const DashboardFilter = ({ navData, queries }) => {
             {navData.map((link) => {
               return (
                 <button
-                  onClick={() => setActiveHandler(link.id, link.category)}
+                  onClick={() => setActiveHandler(link.id, link.code)}
                   key={link.id}
                   to={link.target}
                   className={`${
@@ -33,14 +34,13 @@ const DashboardFilter = ({ navData, queries }) => {
             })}
           </ul>
         </div>
-        <div className="m-2 relative w-full md:w-1/4">
+        <div className="m-2 w-full md:w-1/4">
           <input
             type="text"
             ref={search}
             onChange={userInputHandler}
             className="border border-slate-300 rounded-md h-8 w-full"
           />
-          <i className="fa-solid fa-magnifying-glass absolute top-2 end-2 text-slate-400"></i>
         </div>
       </div>
     </>

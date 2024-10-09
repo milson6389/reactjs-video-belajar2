@@ -10,7 +10,9 @@ import useTrxStore from "../store/trxStore";
 const Orders = () => {
   const allCourse = useCourseStore((state) => state.classes);
   const filterTrx = useTrxStore((state) => state.filteredTrx);
+  const filterCtg = useTrxStore((state) => state.filterTrxByCategory);
   const resetFilter = useTrxStore((state) => state.resetFilter);
+  const [category, setCategory] = useState("");
   const [query, setQuery] = useState("");
   const navLinks = [
     {
@@ -31,7 +33,7 @@ const Orders = () => {
     {
       id: 4,
       title: "Gagal",
-      code: "FAIL",
+      code: "INP",
     },
   ];
 
@@ -46,13 +48,19 @@ const Orders = () => {
     filterTrx(temp);
   };
 
+  const setDataByCategory = (ctg) => {
+    setCategory(ctg);
+    resetFilter();
+    filterCtg(ctg);
+  };
+
   return (
     <>
       <main className="m-5 p-5">
         <div className="flex flex-col md:flex-row w-full gap-5 md:gap-20">
           <DashboardNavbar />
           <Card className="w-full">
-            <DashboardFilter navData={navLinks} queries={setQueryHandler} />
+            <DashboardFilter navData={navLinks} queries={setQueryHandler} categories={setDataByCategory} />
             <OrderList />
           </Card>
         </div>

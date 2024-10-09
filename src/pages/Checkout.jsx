@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import KelasDetailPackage from "../components/kelas/KelasDetailPackage";
 import KelasPaymentProgress from "../components/kelas/KelasPaymentProgress";
 import Card from "../components/ui/Card";
@@ -8,6 +8,7 @@ import useTrxStore from "../store/trxStore";
 import useUserStore from "../store/userStore";
 
 const Checkout = () => {
+  const location = useLocation();
   const navigate = useNavigate();
   const { id } = useParams();
 
@@ -17,6 +18,7 @@ const Checkout = () => {
   const selectedWOP = useTrxStore((state) => state.selectedWOP);
   const adminFee = selectedWOP.admin;
   const addTrx = useTrxStore((state) => state.addTrx);
+  const updateTrx = useTrxStore((state) => state.updateTrx);
   const userInfo = useUserStore((state) => state.user);
 
   const kelasData = allKelasData.find((dt) => dt.id == id);
@@ -29,21 +31,36 @@ const Checkout = () => {
   const coursePrice = kelasData.price * 1000;
 
   const checkoutHandler = () => {
-    const generatedId = +new Date();
-    const newTrx = {
-      id: generatedId,
-      kelas_id: id,
-      email: userInfo.email,
-      wopCode: selectedWOP.code,
-      price: kelasData.price * 1000,
-      admin: adminFee,
-      va_no: `${selectedWOP.va_code} ${userInfo.no_hp.replace(
-        userInfo.no_hp.slice(0, 3),
-        "0"
-      )}`,
-    };
-    addTrx(newTrx);
-    navigate(`/payment/${generatedId}`);
+    if (location.state?.trx) {
+      const existingData = location.state.trx;
+      const updatedData = {
+        ...existingData,
+        wopCode: selectedWOP.code,
+        admin: adminFee,
+        va_no: `${selectedWOP.va_code} ${userInfo.no_hp.replace(
+          userInfo.no_hp.slice(0, 3),
+          "0"
+        )}`,
+      };
+      updateTrx(updatedData);
+      navigate(`/payment/${existingData.id}`);
+    } else {
+      const generatedId = +new Date();
+      const newTrx = {
+        id: generatedId,
+        kelas_id: id,
+        email: userInfo.email,
+        wopCode: selectedWOP.code,
+        price: kelasData.price * 1000,
+        admin: adminFee,
+        va_no: `${selectedWOP.va_code} ${userInfo.no_hp.replace(
+          userInfo.no_hp.slice(0, 3),
+          "0"
+        )}`,
+      };
+      addTrx(newTrx);
+      navigate(`/payment/${generatedId}`);
+    }
   };
 
   return (
