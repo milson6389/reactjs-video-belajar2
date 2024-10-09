@@ -1,6 +1,6 @@
-import Footer from "../components/layout/Footer";
-import DashboardNavbar from "../components/dashboard/dashboardNavbar";
 import { useState } from "react";
+import Footer from "../components/layout/Footer";
+import DashboardNavbar from "../components/dashboard/DashboardNavbar";
 import DashboardFilter from "../components/dashboard/DashboardFilter";
 import Card from "../components/ui/Card";
 import CourseList from "../components/course/CourseList";

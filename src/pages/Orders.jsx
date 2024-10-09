@@ -1,5 +1,5 @@
 import Footer from "../components/layout/Footer";
-import DashboardNavbar from "../components/dashboard/dashboardNavbar";
+import DashboardNavbar from "../components/dashboard/DashboardNavbar";
 import DashboardFilter from "../components/dashboard/DashboardFilter";
 import { useState } from "react";
 import Card from "../components/ui/Card";
@@ -60,7 +60,11 @@ const Orders = () => {
         <div className="flex flex-col md:flex-row w-full gap-5 md:gap-20">
           <DashboardNavbar />
           <Card className="w-full">
-            <DashboardFilter navData={navLinks} queries={setQueryHandler} categories={setDataByCategory} />
+            <DashboardFilter
+              navData={navLinks}
+              queries={setQueryHandler}
+              categories={setDataByCategory}
+            />
             <OrderList />
           </Card>
         </div>

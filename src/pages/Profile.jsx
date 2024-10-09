@@ -1,5 +1,5 @@
 import Footer from "../components/layout/Footer";
-import DashboardNavbar from "../components/dashboard/dashboardNavbar";
+import DashboardNavbar from "../components/dashboard/DashboardNavbar";
 import DashboardProfile from "../components/dashboard/DashboardProfile";
 
 const Profile = () => {
