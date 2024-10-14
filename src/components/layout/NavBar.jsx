@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Logo from "../../assets/img/logo.png";
 import Profile from "../../assets/img/profile.png";
@@ -10,6 +10,13 @@ const NavBar = () => {
   const navigate = useNavigate();
   const isLoggedIn = useUserStore((state) => state.isLoggedIn);
   const logout = useUserStore((state) => state.logout);
+  const navMenu = useRef(null);
+
+  const clickedOutsideHandler = (e) => {
+    if (isActive && !navMenu.current?.contains(e.target)) {
+      setIsActive(false);
+    }
+  };
 
   const setIsMobileHandler = () => {
     setIsMobile(!isMobile);
@@ -30,6 +37,8 @@ const NavBar = () => {
       navigate("/login");
     }
   };
+
+  document.addEventListener("mousedown", clickedOutsideHandler);
 
   return (
     <header className="sticky top-0 px-5 py-2 bg-white h-fit">
@@ -95,7 +104,7 @@ const NavBar = () => {
         {isLoggedIn ? (
           <div className="flex items-center gap-5">
             <Link to="/">Kategori</Link>
-            <div className="relative">
+            <div className="relative" ref={navMenu}>
               <button onClick={setIsActiveHandler}>
                 <img
                   src={Profile}
